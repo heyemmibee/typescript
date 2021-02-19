@@ -1,2 +1,3 @@
-# typescript
-Making Typescript for Website - Alternative Strategry to @linnernrivas
+#Script for Typewriter
+
+Working on different ways to write this code in collaboration with @LinnerNRivas
