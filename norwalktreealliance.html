@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Norwalk Tree Alliance</title>
+</head>
+<body>
+    <div class="container">
+        <h1>
+          We are a non-profit organization that... 
+          <span class="txt-type" data-wait="2000" data-words='["plants native trees,", "provides environmental education,", "protects the urban forest of Norwalk, Connecticut."]'></span>
+        </h1>
+      </div>
+      
+      <style>
+   
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      
+      .txt-type > .txt {
+        border-right: 0.08rem solid #fff;
+        padding-right: 2px;
+        animation: blink 0.5s infinite;
+      }
+      
+      @keyframes blink {
+        0% {
+          border-right: 0.08rem solid rgba(255, 255, 255, 1);
+        }
+        100% {
+          border-right: 0.08rem solid rgba(255, 255, 255, 0.2);
+        }
+      }
+      </style>
+      
+      <script>
+      class TypeWriter {
+        constructor(txtElement, words, wait = 2500) {
+          this.txtElement = txtElement;
+          this.words = words;
+          this.txt = "";
+          this.wordIndex = 0;
+          this.wait = parseInt(wait, 10);
+          this.type();
+          this.isDeleting = false;
+        }
+      
+        type() {
+          const current = this.wordIndex % this.words.length;
+          const complete = this.words[current];
+      
+          if (this.isDeleting) {
+            this.txt = complete.substring(0, this.txt.length - 1);
+          } else {
+            this.txt = complete.substring(0, this.txt.length + 1);
+          }
+      
+          this.txtElement.innerHTML = `<span class="txt">${this.txt}</span>`;
+          let typeSpeed = 50;
+      
+          if (this.isDeleting) {
+            typeSpeed /= 2;
+          }
+      
+          if (!this.isDeleting && this.txt === complete) {
+            typeSpeed = this.wait;
+            this.isDeleting = true;
+          } else if (this.isDeleting && this.txt === "") {
+            this.isDeleting = false;
+            this.wordIndex++;
+            typeSpeed = 300;
+          }
+      
+          setTimeout(() => this.type(), typeSpeed);
+        }
+      }
+      
+      document.addEventListener("DOMContentLoaded", init);
+      
+      function init() {
+        const txtElement = document.querySelector(".txt-type");
+        const words = JSON.parse(txtElement.getAttribute("data-words"));
+        const wait = txtElement.getAttribute("data-wait");
+        new TypeWriter(txtElement, words, wait);
+      }
+      
+      </script>
+</body>
+</html>
