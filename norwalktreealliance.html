@@ -6,20 +6,10 @@
     <title>Norwalk Tree Alliance</title>
 </head>
 <body>
-    <div class="container">
         <h1>
-          We are a non-profit organization that... 
-          <span class="txt-type" data-wait="2000" data-words='["plants native trees,", "provides environmental education,", "protects the urban forest of Norwalk, Connecticut."]'></span>
+          We are a non-profit <span class="txt-type" data-wait="2000" data-words='["that protects the urban forest of Norwalk, Connecticut.", "that provides environmental education to students.", "certified as a Tree City by the Arbor Day Foundation", "that plants native trees, offering maintenece and restoration.", "is looking for more volunteers like you!"]'></span>
         </h1>
-      </div>
-      
       <style>
-   
-      .container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
       
       .txt-type > .txt {
         border-right: 0.08rem solid #fff;
@@ -39,7 +29,7 @@
       
       <script>
       class TypeWriter {
-        constructor(txtElement, words, wait = 2500) {
+        constructor(txtElement, words, wait = 3000) {
           this.txtElement = txtElement;
           this.words = words;
           this.txt = "";
@@ -60,7 +50,7 @@
           }
       
           this.txtElement.innerHTML = `<span class="txt">${this.txt}</span>`;
-          let typeSpeed = 50;
+          let typeSpeed = 70;
       
           if (this.isDeleting) {
             typeSpeed /= 2;
